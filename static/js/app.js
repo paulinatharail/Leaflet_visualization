@@ -1,8 +1,5 @@
 
 
-
-
-
 //Initialize the map and set coordinates and zoom level
 // var mymap = L.map('mapid').setView([37.09, -95.71], 13);
 
@@ -24,20 +21,8 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 //define function to determine color of the marker
 function colorSelector(newMag){
-    // var d = +newMag;
-
-    // return d<0 ? 0 :
-    //         d >= 0 & d < 1 ? 1 :
-    //         d >= 1 & d < 2  ? 2 :
-    //         d >= 2 & d < 3  ? 3 :
-    //         d >= 3 & d < 4  ? 4 : 
-    //         d >= 4 & d < 5  ? 5 :
-    //                 6;
     
-    var color = ['#A9B527','#CCD69C', '#F4E477', '#D6B035', '#FF8A4C', '#A0311B' ];
-      
-    console.log("Color computation : ", Math.floor(+newMag)>5 ? color[5]: color[Math.floor(+newMag)]);
-    
+    var color = ['#84BC29','#A8E28C', '#F8FF44', '#F9A113', '#FF5B42', '#A0311B' ];
     return Math.floor(+newMag)>5 ? color[5]: color[Math.floor(+newMag)];
    
 }
@@ -48,7 +33,7 @@ function markerSize(mag) {
   }
 
 //get the data from USGS
-var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson";
+var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 d3.json(url).then(function(gdata){
 
     var quakes = gdata["features"];
@@ -68,7 +53,7 @@ d3.json(url).then(function(gdata){
 
         L.circle(location, {
             fillOpacity: 1,
-            weight: 1,
+            weight: 0.5,
             color: "black",
             fillColor: color,
             // Setting our circle's radius equal to the output of our markerSize function
@@ -86,7 +71,7 @@ d3.json(url).then(function(gdata){
         var div = L.DomUtil.create('div', 'info legend');
         labels = ['<strong>Magnitude</strong>'],
         limits = ['0-1','1-2','2-3','3-4','4-5','5+'];
-        var colors = ['#A9B527','#CCD69C', '#F4E477', '#D6B035', '#FF8A4C', '#A0311B' ];
+        var colors = ['#84BC29','#A8E28C', '#F8FF44', '#F9A113', '#FF5B42', '#A0311B' ];
 
         limits.forEach(function(limit, index) {
             labels.push("<li style=\"background-color: " + colors[index] + "\">" + limit +  "</li>");
