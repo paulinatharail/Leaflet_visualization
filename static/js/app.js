@@ -67,15 +67,19 @@ d3.json(url).then(function(gdata){
     legend.onAdd = function () {
 
         var div = L.DomUtil.create('div', 'info legend');
-        labels = ['<strong>Magnitude</strong>'],
+        labels = ['<label class=\'labelHeading\'><strong>Magnitude</strong></label><br><br>'],
         limits = ['0-1','1-2','2-3','3-4','4-5','5+'];
         var colors = ['#84BC29','#A8E28C', '#F8FF44', '#F9A113', '#FF5B42', '#A0311B' ];
 
         limits.forEach(function(limit, index) {
-            labels.push("<li style=\"background-color: " + colors[index] + "\">" + limit +  "</li>");
+            // labels.push("<li style=\"background-color: " + colors[index] + "\">" + limit +  "</li>");
+            labels.push("<label class=\"legendColor\" style=\"background-color: " + colors[index] + "\">" + "</label>" +
+            "<label class=\"legendLabel\"  >" + limit +  "</label><br><br>");
+        
         });
     
-        div.innerHTML += "<ul>" + labels.join("") + "</ul>";
+        // div.innerHTML += "<ul>" + labels.join("") + "</ul>";
+        div.innerHTML += labels.join("") ;
         return div;
 
 
