@@ -56,8 +56,6 @@ d3.json(url).then(function(gdata){
             weight: 0.5,
             color: "black",
             fillColor: color,
-            // Setting our circle's radius equal to the output of our markerSize function
-            // This will make our marker's size proportionate to its population
             radius: markerSize(magnitude)
           }).bindPopup("<p><b> Place: </b>" + place + "<br><br><b>Magnitude: </b>" + magnitude + "</p>")
           .addTo(mymap);
