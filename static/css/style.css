@@ -22,8 +22,8 @@ body,
   
   .legendColor {
     padding: 6px;
-    height: 2px;
-    width: 6px;
+    height: 1px;
+    width: 2px;
   }
 
 .legendLabel, .labelHeading {
